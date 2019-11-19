@@ -81,7 +81,7 @@ for regr_choice in range(3):
 
     errors_file = open('Output/'+regr_name+'_Test_Analysis.txt', 'w')
     errors_file.write(
-        'MSE\t'+str(mean_squared_error(y_test, y_predicted))+'\n')
+        'RMSE\t'+str(sqrt(mean_squared_error(y_test, y_predicted)))+'\n')
     errors_file.write('r2\t'+str(r2_score(y_test, y_predicted))+'\n')
     errors_file.close()
 
@@ -101,7 +101,7 @@ for regr_choice in range(3):
 
     errors_file = open('Output/'+regr_name+'_Train_Analysis.txt', 'w')
     errors_file.write(
-        'MSE\t'+str(mean_squared_error(y_train, y_predicted))+'\n')
+        'RMSE\t'+str(sqrt(mean_squared_error(y_train, y_predicted)))+'\n')
     errors_file.write('r2\t'+str(r2_score(y_train, y_predicted))+'\n')
     errors_file.close()
 
