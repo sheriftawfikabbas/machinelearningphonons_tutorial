@@ -1,18 +1,19 @@
 # Imports
 
+# System libraries
 import os
 import warnings
 
-from sklearn import linear_model, decomposition, datasets
+# Tools
 
 import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
 import numpy as np  # linear algebra
 from itertools import cycle
 import matplotlib.pyplot as plt
-
+from sklearn import decomposition, datasets
 
 # Models
-from sklearn import svm
+from sklearn import svm, linear_model
 from xgboost import XGBRegressor, plot_importance
 from sklearn.linear_model import LinearRegression, TheilSenRegressor
 from sklearn.ensemble import RandomForestRegressor
@@ -25,8 +26,6 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 os.mkdir('Output')
 
-plt.rcParams.update({'font.size': 20})
-
 pd.options.mode.chained_assignment = None  # default='warn'
 pd.set_option('display.max_columns', 500)
 
@@ -34,12 +33,10 @@ x = pd.read_csv("X.csv", header=None)
 y = pd.read_csv("y_C_v.csv", header=None)
 
 # Visualize the C_v data. Helps in outlier detection
+plt.rcParams.update({'font.size': 20})
 plt.figure(figsize=(10,10))
 plt.plot(np.array(y.sort_values(by=0)))
 plt.savefig('Output/Outliers', bbox_inches='tight')
-
-
-# y = np.reshape(y, (numRows, 1))
 
 # Apply scalar normalization of the input data
 scaler = StandardScaler().fit(x)
